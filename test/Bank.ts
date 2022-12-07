@@ -1,6 +1,6 @@
-import { time, loadFixture } from "@nomicfoundation/hardhat-network-helpers";
+import { loadFixture } from "@nomicfoundation/hardhat-network-helpers";
 import { expect } from "chai";
-import { ethers } from "hardhat";
+import { ethers, upgrades } from "hardhat";
 
 describe("Bank", function () {
   // We define a fixture to reuse the same setup in every test.
@@ -12,7 +12,9 @@ describe("Bank", function () {
     const [owner, otherAccount] = await ethers.getSigners();
 
     const Bank = await ethers.getContractFactory("Bank");
-    const bank = await Bank.deploy(name, symbol);
+    const bank = await upgrades.deployProxy(Bank, [name, symbol], {
+      kind: "uups",
+    });
 
     return { bank, owner, otherAccount, name, symbol };
   }
@@ -24,5 +26,4 @@ describe("Bank", function () {
       expect(await bank.name()).to.equal(name);
     });
   });
-
 });
