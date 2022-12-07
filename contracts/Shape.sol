@@ -7,7 +7,7 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract Bank is Initializable, UUPSUpgradeable, OwnableUpgradeable {
+contract Shape is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     string public name;
     string public symbol;
 
