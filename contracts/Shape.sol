@@ -23,4 +23,8 @@ contract Shape is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     function _authorizeUpgrade(
         address newImplmentation
     ) internal override onlyOwner {}
+
+    function version() pure public virtual returns (string memory) {
+        return 'v1!';
+    }
 }

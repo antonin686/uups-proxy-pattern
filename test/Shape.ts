@@ -12,13 +12,13 @@ describe("Shape", function () {
     const [owner, otherAccount] = await ethers.getSigners();
 
     const Shape = await ethers.getContractFactory("Shape");
-    const ShapeV1 = await ethers.getContractFactory("ShapeV1");
+    const ShapeV2 = await ethers.getContractFactory("ShapeV2");
     const shape = await upgrades.deployProxy(Shape, [name, symbol], {
       kind: "uups",
     });
-    const shapeV1 = await upgrades.upgradeProxy(shape, ShapeV1);
+    const shapeV2 = await upgrades.upgradeProxy(shape, ShapeV2);
 
-    return { shape, shapeV1, owner, otherAccount, name, symbol };
+    return { shape, shapeV2, owner, otherAccount, name, symbol };
   }
 
   describe("Deployment", function () {
@@ -27,10 +27,10 @@ describe("Shape", function () {
 
       expect(await shape.name()).to.equal(name);
     });
-    it("Should be upgraded to v1", async function () {
-      const { shapeV1, name } = await loadFixture(deployBankFixture);
+    it("Should be upgraded to v2", async function () {
+      const { shapeV2, name } = await loadFixture(deployBankFixture);
 
-      expect(await shapeV1.version()).to.equal("v1!");
+      expect(await shapeV2.version()).to.equal("v2!");
     });
   });
 });
