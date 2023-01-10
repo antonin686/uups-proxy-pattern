@@ -10,13 +10,16 @@ import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 contract Box is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     string public name;
     string public symbol;
+    uint public value;
 
     function initialize(
         string memory _name,
-        string memory _symbol
+        string memory _symbol,
+        uint _value
     ) public initializer {
         name = _name;
         symbol = _symbol;
+        value = _value;
         __Ownable_init();
     }
 

@@ -9,10 +9,11 @@ describe("Box", function () {
   async function deployBankFixture() {
     const name = "BS23 Box";
     const symbol = "BS23BOX";
+    const initialValue = 0;
     const [owner, otherAccount] = await ethers.getSigners();
 
     const Box = await ethers.getContractFactory("Box");
-    const box = await upgrades.deployProxy(Box, [name, symbol], {
+    const box = await upgrades.deployProxy(Box, [name, symbol, initialValue], {
       kind: "uups",
     });
 
