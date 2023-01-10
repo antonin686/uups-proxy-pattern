@@ -6,7 +6,9 @@
   "author": "Md Antonin Islam <antonin.islam.dev@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "npx hardhat test"
+    "test": "npx hardhat test",
+    "compile": "npx hardhat compile",
+    "deploy:v1": "npx hardhat run --network goerli ./scripts/deploy_v1.ts"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
@@ -33,6 +35,7 @@
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.0",
-    "@openzeppelin/contracts-upgradeable": "^4.8.0"
+    "@openzeppelin/contracts-upgradeable": "^4.8.0",
+    "dotenv": "^16.0.3"
   }
 }
