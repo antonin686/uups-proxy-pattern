@@ -12,6 +12,11 @@ contract Box is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     string public symbol;
     uint public value;
 
+    /// @custom:oz-upgrades-unsafe-allow constructor
+    constructor() {
+        _disableInitializers();
+    }
+
     function initialize(
         string memory _name,
         string memory _symbol,
@@ -21,6 +26,7 @@ contract Box is Initializable, UUPSUpgradeable, OwnableUpgradeable {
         symbol = _symbol;
         value = _value;
         __Ownable_init();
+        __UUPSUpgradeable_init();
     }
 
     function _authorizeUpgrade(

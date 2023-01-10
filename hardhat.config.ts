@@ -27,10 +27,10 @@ const config: HardhatUserConfig = {
       url: process.env.ALCHEMY_GOERLI_RPC_WITH_API,
       accounts: [`${process.env.PRIVATE_ADDRESS}`],
     },
-    // polygonMumbai: {
-    //   url: process.env.ALCHEMY_POLYGON_MUMBAI_RPC_WITH_API,
-    //   accounts: [`${process.env.PRIVATE_ADDRESS}`],
-    // }
+    mumbai: {
+      url: process.env.ALCHEMY_POLYGON_MUMBAI_RPC_WITH_API,
+      accounts: [`${process.env.PRIVATE_ADDRESS}`],
+    }
   }
 };
 

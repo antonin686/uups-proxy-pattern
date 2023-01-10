@@ -8,7 +8,8 @@
   "scripts": {
     "test": "npx hardhat test",
     "compile": "npx hardhat compile",
-    "deploy:v1": "npx hardhat run --network goerli ./scripts/deploy_v1.ts"
+    "deploy:v1": "npx hardhat run --network goerli ./scripts/deploy_v1.ts",
+    "deploy": "node ./scripts/deploy.js"
   },
   "devDependencies": {
     "@ethersproject/abi": "^5.4.7",
