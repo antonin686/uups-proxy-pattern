@@ -7,10 +7,10 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
-contract Box is Initializable, UUPSUpgradeable, OwnableUpgradeable {
+contract Burger is Initializable, UUPSUpgradeable, OwnableUpgradeable {
     string public name;
     string public symbol;
-    uint public value;
+    bytes[] internal stack;
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
@@ -19,12 +19,10 @@ contract Box is Initializable, UUPSUpgradeable, OwnableUpgradeable {
 
     function initialize(
         string memory _name,
-        string memory _symbol,
-        uint _value
+        string memory _symbol
     ) public initializer {
         name = _name;
         symbol = _symbol;
-        value = _value;
         __Ownable_init();
         __UUPSUpgradeable_init();
     }
@@ -35,5 +33,17 @@ contract Box is Initializable, UUPSUpgradeable, OwnableUpgradeable {
 
     function version() pure public virtual returns (string memory) {
         return 'v1!';
+    }
+
+    function push(bytes memory item) internal {
+        stack.push(item);
+    }
+
+    function addBun() external {
+        push('Bun');
+    }
+
+    function addBeefPatty() external {
+        push('Beef Patty');
     }
 }
